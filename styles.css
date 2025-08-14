@@ -14,6 +14,14 @@ body {
   color: white;
 }
 
+/* NEW: This wrapper will act as the positioning context for the buttons */
+#main-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #gameContainer {
   display: flex;
   flex-direction: column;
@@ -30,7 +38,11 @@ canvas {
 }
 
 #gameOver {
+  /* We make the "Game Over" screen position relative to the wrapper now */
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 20px;
@@ -38,6 +50,7 @@ canvas {
   text-align: center;
   font-size: 24px;
   display: none;
+  z-index: 10; /* Ensure it's on top */
 }
 
 #restartBtn {
@@ -66,41 +79,59 @@ canvas {
   display: none;
 }
 
+
 /* --- Styles for Mobile Devices --- */
 @media (max-width: 768px) {
   #instructions {
     font-size: 12px;
   }
   
+  /* Make the controls visible on mobile */
   #mobile-controls {
-    display: grid;
-    grid-template-areas:
-      ". up ."
-      "left . right"
-      ". down .";
-    gap: 8px;
-    margin-top: 12px;
+    display: block;
   }
-
+  
+  /* UPDATED: Buttons now use absolute positioning */
   #mobile-controls button {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+    position: absolute; /* Position relative to #main-wrapper */
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
     background-color: #333;
     color: white;
     border: 2px solid #555;
-    border-radius: 15px;
+    border-radius: 10px;
     cursor: pointer;
-    user-select: none; /* Prevents text selection on repeated taps */
+    user-select: none;
+    z-index: 5;
   }
   
   #mobile-controls button:active {
       background-color: #555;
   }
   
-  /* Place buttons in their grid areas */
-  #btn-up { grid-area: up; }
-  #btn-left { grid-area: left; }
-  #btn-right { grid-area: right; }
-  #btn-down { grid-area: down; }
+  /* Position each button on one side of the container */
+  #btn-up {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -120%); /* Move up from center, and then move 120% of its height upwards */
+  }
+
+  #btn-down {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 120%); /* Move down from center, and then 120% of its height downwards */
+  }
+
+  #btn-left {
+    left: 0;
+    top: 50%;
+    transform: translate(-120%, -50%); /* Move left from center, and then 120% of its width to the left */
+  }
+
+  #btn-right {
+    right: 0;
+    top: 50%;
+    transform: translate(120%, -50%); /* Move right from center, and then 120% of its width to the right */
+  }
 }

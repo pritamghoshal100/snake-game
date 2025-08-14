@@ -8,23 +8,25 @@
 </head>
 <body>
 
-  <div id="gameContainer">
-    <div id="score">Score: 0</div>
-    <canvas width="400" height="400" id="game"></canvas>
-    <div id="instructions">Use arrow keys or on-screen buttons to move.</div>
-  </div>
-
-  <div id="gameOver">
-    <div id="finalScore">Game Over!</div>
-    <div>Your Score: <span id="scoreDisplay">0</span></div>
-    <button id="restartBtn">Play Again</button>
-  </div>
-
-  <div id="mobile-controls">
-    <button id="btn-up">▲</button>
-    <button id="btn-left">◀</button>
-    <button id="btn-down">▼</button>
-    <button id="btn-right">▶</button>
+  <div id="main-wrapper">
+    <div id="gameContainer">
+      <div id="score">Score: 0</div>
+      <canvas width="400" height="400" id="game"></canvas>
+      <div id="instructions">Use arrow keys or on-screen buttons to move.</div>
+    </div>
+  
+    <div id="gameOver">
+      <div id="finalScore">Game Over!</div>
+      <div>Your Score: <span id="scoreDisplay">0</span></div>
+      <button id="restartBtn">Play Again</button>
+    </div>
+  
+    <div id="mobile-controls">
+      <button id="btn-up">▲</button>
+      <button id="btn-left">◀</button>
+      <button id="btn-down">▼</button>
+      <button id="btn-right">▶</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
