@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent; /* Prevents flash on tap */
 }
 
 body {
@@ -58,4 +59,48 @@ canvas {
   margin-top: 10px;
   font-size: 14px;
   color: #ccc;
+}
+
+/* Hide mobile controls by default */
+#mobile-controls {
+  display: none;
+}
+
+/* --- Styles for Mobile Devices --- */
+@media (max-width: 768px) {
+  #instructions {
+    font-size: 12px;
+  }
+  
+  #mobile-controls {
+    display: grid;
+    grid-template-areas:
+      ". up ."
+      "left . right"
+      ". down .";
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  #mobile-controls button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #333;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 15px;
+    cursor: pointer;
+    user-select: none; /* Prevents text selection on repeated taps */
+  }
+  
+  #mobile-controls button:active {
+      background-color: #555;
+  }
+  
+  /* Place buttons in their grid areas */
+  #btn-up { grid-area: up; }
+  #btn-left { grid-area: left; }
+  #btn-right { grid-area: right; }
+  #btn-down { grid-area: down; }
 }
